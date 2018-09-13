@@ -1,0 +1,24 @@
+<h1>All Bands Page!!!</h1>
+
+<form action="<%= new_band_url %>" method='get'>
+  <%= auth_token %>
+  <input type="submit" value="Add Band">
+</form>
+<br><br>
+
+<% @bands.each do |band| %>
+  <li><%= band.name %></li>
+  <form action="<%= band_url(band) %>" method='get'>
+    <%= auth_token %>
+    <input type="submit" value="View Band">
+  </form>
+  <form action="<%= edit_band_url(band) %>" method='get'>
+    <%= auth_token %>
+    <input type="submit" value="Edit Band">
+  </form>
+  <form action="<%= band_url(band) %>" method='post'>
+    <input type="hidden" name="_method" value="delete">
+    <%= auth_token %>
+    <input type="submit" value="Destroy Band">
+  </form>
+<% end %>

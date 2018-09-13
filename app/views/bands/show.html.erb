@@ -1,0 +1,14 @@
+<h1>Show Band Page!!!</h1>
+
+<li>Name: <%= @band.name %></li>
+
+<form action="<%= edit_band_url %>" method='get'>
+  <%= auth_token %>
+  <input type="submit" value="Edit Band">
+</form>
+
+<form action="<%= bands_url %>" method='post'>
+  <input type="hidden" name="_method" value="delete">
+  <%= auth_token %>
+  <input type="submit" value="Destroy Band">
+</form>

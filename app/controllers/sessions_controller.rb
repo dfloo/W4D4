@@ -11,18 +11,17 @@ class SessionsController < ApplicationController
     )
 
     unless user.nil?
-      log_in_user!(user)
-      render json: user 
+      login(user)
+      redirect_to bands_url
     else
-      flash.now[:errors] = ["Invalid login credentials!!!"]
-      render :new
+      flash[:errors] = ["Invalid login credentials!!!"]
+      redirect_to new_session_url
     end
   end
 
   def destroy
-    current_user.reset_session_token!
-    session[:session_token] = nil
-    redirect_to new_session_url
+    logout
+    redirect_to bands_url
   end
 
 end
