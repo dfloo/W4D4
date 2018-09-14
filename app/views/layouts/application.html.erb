@@ -10,29 +10,39 @@
   </head>
 
   <body>
-
+    <nav><h1>My Music App</h1></nav>
     <% if logged_in? %>
       <nav>
-        <a class='button' href="<%= bands_url %>">Homepage</a>
-
+        </form>
         <div class='user-detail'>
           <p>Welcome: <%= current_user.email %></p>
+
+        <form action="<%= bands_url %>" method="get">
+          <%= auth_token %>
+          <input type="submit" value="Home Page">
+        </form>
+
         <form action="<%= session_url %>" method='post'>
           <input type="hidden" name="_method" value="delete">
           <%= auth_token %>
           <input type="submit" value="Log Out">
         </form>
+
         </div>
       </nav>
     <% else %>
       <nav>
-        <a class='button' href="<%= bands_url %>">Homepage</a>
+        <form action="<%= bands_url %>" method="get">
+          <%= auth_token %>
+          <input type="submit" value="Home Page">
+        </form>
 
         <div class='user-detail'>
         <form action="<%= new_session_url %>" method='get'>
           <%= auth_token %>
           <input type="submit" value="Log In">
         </form>
+
         <form action="<%= new_user_url %>" method="get">
           <%= auth_token %>
           <input type="submit" value="Sign Up">

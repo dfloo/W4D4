@@ -1,10 +1,9 @@
 <h1>Edit This Band!!!</h1>
 
-<% if flash.now[:errors] %>
-  <%= render flash.now[:errors] %>
-<% end %>
+<%= @band.name %><br>
 
-<%= @band.name %>
+<%= flash[:errors] %>
+
 <br><br>
 
 <form action="<%= band_url %>" method="post">
