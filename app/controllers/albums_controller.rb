@@ -7,6 +7,7 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
+    debugger
     if @album.save
       redirect_to band_url(@album.band_id)
     else

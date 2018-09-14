@@ -12,6 +12,6 @@
 #
 
 class Album < ApplicationRecord
-  validates :title, :year, :live?, :band_id, presence: true
-
+  validates :title, :year, :band_id, presence: true
+  validates :live?, inclusion: { in: [true, false] }
 end
